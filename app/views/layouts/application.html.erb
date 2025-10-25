@@ -1,19 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>ApiDemo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="h-full bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo/Brand -->
+          <div class="flex items-center">
+            <%= link_to root_path, class: "flex items-center" do %>
+              <span class="text-xl font-bold text-gray-900">API Demo</span>
+            <% end %>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class="hidden md:flex items-center space-x-4">
+            <%= link_to "Web Books", books_path, class: "text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors" %>
+          </div>
+
+          <!-- Auth Buttons -->
+          <div class="flex items-center space-x-3">
+            <% if user_signed_in? %>
+              <span class="text-sm text-gray-600 hidden sm:inline">
+                <%= current_user.email %>
+              </span>
+              <%= button_to "Sign out", destroy_user_session_path,
+                  method: :delete,
+                  class: "px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors" %>
+            <% else %>
+              <%= link_to "Sign in", new_user_session_path,
+                  class: "px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors" %>
+              <%= link_to "Sign up", new_user_registration_path,
+                  class: "px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <%= yield %>
     </main>
+
+    <!-- Footer (optional) -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <p class="text-center text-sm text-gray-500">
+          © <%= Time.current.year %> API Demo. Built with Rails & Tailwind CSS.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
