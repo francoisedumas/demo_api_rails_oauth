@@ -8,14 +8,18 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-if Doorkeeper::Application.count.zero?
-  Doorkeeper::Application.create!(name: 'Web Client', redirect_uri: '', scopes: '')
-  Doorkeeper::Application.create!(name: 'iOS Client', redirect_uri: '', scopes: '')
-  Doorkeeper::Application.create!(name: 'Android Client', redirect_uri: '', scopes: '')
-  Doorkeeper::Application.create!(name: 'React', redirect_uri: '', scopes: '')
-end
+# if Doorkeeper::Application.count.zero?
+#   Doorkeeper::Application.create!(name: 'Web Client', redirect_uri: '', scopes: '')
+#   Doorkeeper::Application.create!(name: 'iOS Client', redirect_uri: '', scopes: '')
+#   Doorkeeper::Application.create!(name: 'Android Client', redirect_uri: '', scopes: '')
+#   Doorkeeper::Application.create!(name: 'React', redirect_uri: '', scopes: '')
+# end
 
-User.first_or_create(email: 'francois@example.com',
-                     password: 'password',
-                     password_confirmation: 'password',
-                     role: User.roles[:admin])
+# User.first_or_create(email: 'francois@example.com',
+#                      password: 'password',
+#                      password_confirmation: 'password',
+#                      role: User.roles[:admin])
+
+# 20.times.each do |_incrementally|
+#   Book.create(title: Faker::Book.title, body: Faker::Lorem.paragraphs)
+# end
