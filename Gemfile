@@ -44,6 +44,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "rack-attack"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -56,7 +58,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "faker"
   gem "web-console"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
