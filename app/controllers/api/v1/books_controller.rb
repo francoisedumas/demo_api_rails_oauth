@@ -5,8 +5,12 @@ module Api
 
       # GET /api/v1/books
       def index
-        @books = Book.all
-        render json: @books
+        pagy, books = pagy(Book.all, items: 20)
+
+        render json: {
+          data: books,
+          pagination: pagy_metadata(pagy)
+        }
       end
 
       # GET /api/v1/books/:id
